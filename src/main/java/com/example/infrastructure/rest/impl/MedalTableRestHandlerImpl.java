@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
 
+import com.example.application.service.MedalTableService;
 import com.example.application.service.impl.MedalTableServiceImpl;
 import com.example.domain.model.MedalTable;
 import com.example.infrastructure.rest.MedalTableRestHandler;
@@ -18,9 +19,9 @@ public class MedalTableRestHandlerImpl implements MedalTableRestHandler {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MedalTableServiceImpl.class.getName());
 
-	private MedalTableServiceImpl service;
+	private MedalTableService service;
 
-	public MedalTableRestHandlerImpl(MedalTableServiceImpl service) {
+	public MedalTableRestHandlerImpl(MedalTableService service) {
 		this.service = service;
 	}
 
