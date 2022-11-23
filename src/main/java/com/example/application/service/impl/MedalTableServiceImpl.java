@@ -4,15 +4,16 @@ import java.util.List;
 
 import com.example.application.service.MedalTableService;
 import com.example.domain.model.MedalTable;
+import com.example.infrastructure.repository.MedalTableDAO;
 import com.example.infrastructure.repository.impl.MedalTableDAOImpl;
 
 import io.reactivex.Single;
 
 public class MedalTableServiceImpl implements MedalTableService {
 
-	private MedalTableDAOImpl medalDao = MedalTableDAOImpl.getInstance();
+	private MedalTableDAO medalDao = MedalTableDAOImpl.getInstance();
 
-	public MedalTableServiceImpl(MedalTableDAOImpl mtDAO) {
+	public MedalTableServiceImpl(MedalTableDAO mtDAO) {
 		this.medalDao = mtDAO;
 	}
 
