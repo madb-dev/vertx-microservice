@@ -1,8 +1,11 @@
 package com.example.verticle;
 
 import com.example.Main;
+import com.example.application.service.MedalTableService;
 import com.example.application.service.impl.MedalTableServiceImpl;
+import com.example.infrastructure.repository.MedalTableDAO;
 import com.example.infrastructure.repository.impl.MedalTableDAOImpl;
+import com.example.infrastructure.rest.MedalTableRestHandler;
 import com.example.infrastructure.rest.impl.MedalTableRestHandlerImpl;
 import com.example.router.MedalTableRouter;
 
@@ -19,9 +22,9 @@ public class MainVerticle extends AbstractVerticle {
 	@Override
 	public void start(Future<Void> startPromise) throws Exception {
 
-		final MedalTableDAOImpl medalDAO = new MedalTableDAOImpl();
-		final MedalTableServiceImpl medalService = new MedalTableServiceImpl(medalDAO);
-		final MedalTableRestHandlerImpl medalHandler = new MedalTableRestHandlerImpl(medalService);
+		final MedalTableDAO medalDAO = new MedalTableDAOImpl();
+		final MedalTableService medalService = new MedalTableServiceImpl(medalDAO);
+		final MedalTableRestHandler medalHandler = new MedalTableRestHandlerImpl(medalService);
 		final MedalTableRouter medalRouter = new MedalTableRouter(vertx, medalHandler);
 
 		final Router router = Router.router(vertx);
